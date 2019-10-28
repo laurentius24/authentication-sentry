@@ -315,8 +315,7 @@ class Sentry {
 	 */
 	public function login(UserInterface $user, $remember = false)
 	{
-		if ( ! $user->isActivated())
-		{
+		if ( ! $user->isActivated()) {
 			$login = $user->getLogin();
 			throw new UserNotActivatedException("Cannot login user [$login] as they are not activated.");
 		}
@@ -329,8 +328,7 @@ class Sentry {
 		// Set sessions
 		$this->session->put($toPersist);
 
-		if ($remember)
-		{
+		if ($remember) {
 			$this->cookie->forever(json_encode($toPersist));
 		}
 
